@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function App({library}) {
+function App() {
+  const [emotion, setEmotion] = useState("happy");
   return (
     <div className="App">
-      <h1>Hello {library}</h1>
+      <h1>Current emotion is {emotion}</h1>
+      <button onClick={()=> setEmotion("sad")}>sad</button>
+      <button onClick={()=>setEmotion("Excited")}>Excited</button>
     </div>
   );
 }
