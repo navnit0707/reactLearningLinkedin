@@ -14,15 +14,34 @@
     <title>React ⚛️</title>
   </head>
   <body>
-    <h1>Getting Started with React</h1>
     <div id="root"></div>
     <script type="text/babel">
+      function Header(){
+        return(
+          <header>
+            <h1>Eves kitchen</h1>
+            </header>
+        );
+
+      }
+      function Main(){
+        return(
+          <section>
+            <p> We Serve the most delicious food around 
+              </p>
+              </section>
+        );
+      }
+      function App(){
+        return(
+          <div>
+            <Header />
+            <Main />
+            </div>
+        );
+      }
       ReactDOM.render(
-        <ul>
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
-        </ul>,
+        <App />,
         document.getElementById("root")
       );
     </script>
