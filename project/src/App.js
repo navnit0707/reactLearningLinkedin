@@ -1,40 +1,49 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import {Link , Outlet} from 'react-router-dom';
 
-function GithubUser({name,location}){
+
+export function Contact(){
+  return(<div><nav>
+    <Link to="/">Home</Link>
+  <Link to="/about">About</Link>
+  </nav>
+  <h1>Contact US</h1></div>);
+}
+function Home(){
+  return(<div>
+    <nav>
+    <Link to="/about">About</Link>
+    <Link to="/contact">Contact</Link>
+    </nav>
+    <h1>
+      My Website
+    </h1>
+  </div>);
+}
+export function History(){
   return(
     <div>
-      <h1>{name}</h1>
-      <p>{location}</p>
+      <h2>History</h2>
     </div>
   );
 }
-
-function App() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading , setLoading] = useState(true);
-  useEffect(()=>{
-    setLoading(true);
-    fetch(`https://api.github.com/users/navnit0707`)
-    .then((respose)=> respose.json())
-    .then(data=>setData(data))
-    .then(()=>setLoading(false))
-    .catch(setError);
-  },[]);
-  
-  
-  if(loading){
-    return <h1>loading...</h1>
-  }
-
-  if(error){
-    return <h1>error</h1>
-  }
-
+export function About(){
   return(
-    <GithubUser name={data.name} location={data.location}/>
+    <div>
+      <nav>
+      <Link to="/">Home</Link>
+    
+    <Link to="/contact">Contact</Link>
+    </nav>
+    <h1>About</h1>
+    <Outlet />
+    </div>
   );
 }
+export function App() {
+  
+ return(
+  <Home />
+ );
+}
 
-export default App;
