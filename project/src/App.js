@@ -1,14 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import {  useReducer} from 'react';
 
 function App() {
-  const [emotion, setEmotion] = useState("happy");
+  const [checked, setChecked] = useReducer((checked)=> !checked , false);
+
+  // second arg in useEffect is [emotion] which means if there is 
+  //any change in emotion then render it again
   return (
     <div className="App">
-      <h1>Current emotion is {emotion}</h1>
-      <button onClick={()=> setEmotion("sad")}>sad</button>
-      <button onClick={()=>setEmotion("Excited")}>Excited</button>
+      <input type="checkbox" value={checked} onChange={setChecked} />
+      <label>{checked ? "checked" : "not checked"}</label>
     </div>
   );
 }
