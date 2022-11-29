@@ -24,11 +24,25 @@
         );
 
       }
+
+      const dishes = [
+        "Black Bean Soup",
+        "Macaroni and chesse",
+        "Salmon and Potatoes"
+      ];
+
+      const dishObjects = dishes.map((dish,i)=>(
+        {id: i,
+        title: dish}
+      ));
       function Main(props){
         return(
           <section>
-            <p> We Serve the most {props.adjective} food around 
-              </p>
+           <ul>
+            {props.dishes.map((dish)=>(<li key={dish.id}>{dish.title}</li>)
+              
+            )}
+            </ul>
               </section>
         );
       }
@@ -43,7 +57,7 @@
         return(
           <div>
             <Header name="Navnit"/>
-            <Main adjective="amazing"/>
+            <Main dishes={dishObjects}/>
             <Footer year={new Date().getFullYear()} />
             </div>
         );
